@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.css"
+          type="text/css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/railscasts.min.css"
+          rel="stylesheet"/>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/java.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/kotlin.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <style>
+      
+
+body {
+  font-family: "Open Sans", "Helvetica", "Helvetica Neue",  "Arial", sans-serif;
+  font-size:90%;
+  color: black;
+}
+
+p {
+  margin: 0.5em;
+}
+
+pre code {
+  font-family: "Monaco";
+  font-size: 100%;
+}
+
+img {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin:10px;
+}
+
+h1, h2, h3 {
+  border-bottom:thin solid black;
+  margin-bottom: 0.5em;
+  margin-top: 1em;
+}
+
+h1 {
+  font-style:italic;
+  font-size:130%;
+}
+
+h2 {
+  font-size:110%;
+}
+
+h3 {
+  font-size:100%;
+}
+
+
+
+      
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+.wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.footer {
+  background: white;
+  text-align: right;
+}
+.content {
+  flex: 1;
+  overflow: auto;
+}
+
+
+
+    </style>
+  </head>
+
+  
+  
+
+  <div class="ui fixed top pointing inverted stackable menu labmenu">
+    <header class="header item">
+      <i id="toc" class="sitemap icon"></i>
+      
+        <a href="../index.html">  Module introduction and overview  </a>
+      
+    </header>
+    <div class="right tab-menu menu">
+      
+        <a class="item" data-tab="Preparatory Lab">
+          Preparatory Lab
+        </a>
+      
+        <a class="item" data-tab="01">
+          01
+        </a>
+      
+        <a class="item" data-tab="02">
+          02
+        </a>
+      
+    </div>
+  </div>
+
+
+  
+
+  <div class="ui pushable">
+    <div class="ui inverted labeled icon left inline vertical sidebar menu">
+      <br><br>
+      
+        
+          
+            <a class="item"
+               href="http://wit-hdip-comp-sci-2019.github.io/computer-systems//topic-00-overview/book-1/index.html">Preparatory Lab </a>
+          
+        
+      
+    </div>
+    <div class="pusher" tabindex="-1">
+      <div class="ui basic segment">
+        <br>
+        
+          <div class="ui tab segment lab" data-tab="Preparatory Lab">
+            <h1>Objectives</h1>
+<p>Virtualbox · Linux</p>
+<h2>Introduction</h2>
+<p>The main purpose of this lab is to set up your laptop/workstation with the main software packages used in this module, specifically Virtualbox and the Ubuntu Operating System. <strong>Please complete this lab before the on-site days in June</strong> as downloading and installing these packages can take some time.
+On successful completion, you should have a &quot;platform independent&quot; environment to complete the labs and assignments irrespective of the type of machine/operating system you use.</p>
+<p>There is a &quot;computer-systems&quot; channel on Slack so if you&#39;ve any issues with the lab you can interact with us there there and/or resolve it during the Computer Systems and Networks workshop on June 13th.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="01">
+            <h2>Download and install Virtualbox v6.0.8</h2>
+<p><img src="./img/virtualbox1.png" alt="VirtualBox.org"></p>
+<p>Virtualbox is a <em>virtualisation hypervisor</em> which provides an environment to create and provision virtual machine instances.</p>
+<p>You will be using Virtualbox to explore machine virtualisation and operating systems. This and subsequent labs have been developed and tested using <strong>version 6.0.8</strong>. To keep your development environment consistent with the labs, <strong>you are advised to install this version</strong>.</p>
+<p>Select the appropriate download and install Virtualbox 6.0.8 for your operating system:</p>
+<ul>
+<li><a href="https://download.virtualbox.org/virtualbox/6.0.8/VirtualBox-6.0.8-130520-Win.exe">Windows</a></li>
+<li><a href="https://download.virtualbox.org/virtualbox/6.0.8/VirtualBox-6.0.8-130520-OSX.dmg">OS X</a></li>
+<li><a href="https://www.virtualbox.org/wiki/Linux_Downloads">Linux</a></li>
+</ul>
+<p>Ensure that Virtualbox has installed correctly by starting the application on your machine.</p>
+<p>All going well you should see something similar to the following:</p>
+<p><img src="./img/virtualbox2.png" alt="VirtualBox.org"></p>
+<p>For more information about Virtualbox and installation, have a look around the <a href="https://www.virtualbox.org/">website</a>. </p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="02">
+            <h1>Disco Dingo!!!!!!!!!!!!</h1>
+<p><img src="./img/dingo.png" alt="Ubuntu 19.04"></p>
+<p>Ubuntu V 19.04 was released in April 2019 and is guaranteed to have supported security and maintenance updates until April 2024</p>
+<ul>
+<li>Ubuntu is an ancient African word meaning <strong><em>humanity to others</em></strong>. It also means <strong><em>I am what I am because of who we all are</em></strong>.</li>
+<li>Ubuntu is free/Libre Open-Source Software</li>
+<li>Ubuntu is a computer operating system!!!</li>
+<li>Ubuntu used the <strong><em>Linux kernel</em></strong></li>
+</ul>
+<p><strong>The Linux kernel on its own, is not an operating system, but rather a set of computer instructions, that enable communication between software applications and the data processing done at the hardware level.</strong></p>
+<h2>Recommended system requirements(Ubuntu):</h2>
+<ul>
+<li>2 GHz dual core processor or better</li>
+<li>2 GB system memory or more</li>
+<li>25 GB of free hard drive space</li>
+<li><p>The Ubuntu <strong><em>iso</em></strong> image file</p>
+<p>Also:</p>
+</li>
+<li><p>Internet access is helpful</p>
+</li>
+</ul>
+<h2>What is an <strong><em>iso</em></strong> image file</h2>
+<p>You will actually be downloading  an <strong>iso</strong> image file. ISO images are often used to distribute large programs over the internet due to the fact that all of the program&#39;s files can be neatly contained as a single file.</p>
+<p>With this iso image, potentially you can:</p>
+<ul>
+<li>Install or upgrade Ubuntu</li>
+<li>Test out the Ubuntu desktop experience without touching your PC configuration</li>
+<li>Boot into Ubuntu on a borrowed machine or from an internet cafe</li>
+<li>Use tools installed by default on the USB stick to repair or fix a broken configuration</li>
+</ul>
+<h2>Downloading Ubuntu 19.04</h2>
+<p>Download the latest version(19.04) via the <a href="https://www.ubuntu.com/#download">Ubuntu download page</a>. </p>
+<p><img src="./img/download_LI.jpg" alt="Ubuntu 19.04"></p>
+<h2>Installing Ubuntu in VirtualBox</h2>
+<p>Start VirtualBox and create a new virtual machine by clicking the <strong><em>New</em></strong> icon</p>
+<p>When the New Virtual Machine Wizard appears, enter &quot;Ubuntu19.04&quot; for the name,  &quot;Linux&quot; for type, and  &quot;Ubuntu (64 bit)&quot; for version. You can leave the Machine folder as default setting if you want.</p>
+<p><img src="./img/virtualbox.png" alt="New Virtual Machine"></p>
+<ul>
+<li>Click <strong>Next</strong> and select how much memory you wish to allocate to the virtual machine (we recommend you give at least 2048MB. You can increase it later if it&#39;s sluggish).</li>
+</ul>
+<p><img src="./img/memory.png" alt="New Virtual Machine"></p>
+<ul>
+<li><p>Click next and accept the default settings for the remaining options.</p>
+</li>
+<li><p>Finish the wizard by clicking the <strong>Create</strong> button.</p>
+</li>
+</ul>
+<p><img src="./img/create.png" alt="New Virtual Machine"></p>
+<p> The <strong><em>New Virtual Machine Wizard</em></strong> will close and you will be brought back to VirtualBox Manager.</p>
+<ul>
+<li>Select the Virtual Machine you&#39;ve just created and click <strong><em>Start</em></strong>
+<img src="./img/start.png" alt="Start Ubuntu"></li>
+</ul>
+<h2>First Run Wizard</h2>
+<p>The &quot;First Run Wizard&quot; should now appear appear. </p>
+<p>_ Click Next button. On the second screen (as shown below), click at &#39;folder&#39; icon and choose your Ubuntu iso file you downloaded earlier.
+ <img src="./img/iso.png" alt="Select your Ubuntu iso file you saved above"></p>
+<p>Click Start button to install Ubuntu. Like any OS installation, you will be asked a few configuration questions during the install process. Select the appropriate responses for language/time/keyboard etc.</p>
+<p> WELCOME TO UBUNTU!!!!</p>
+<h1>Tutorials, tips and tricks</h1>
+<p>There are many many tutorials and resources available online to assist. Ubuntu also has a comprehensive <a href="https://tutorials.ubuntu.com/">Tutorial page</a>.
+Depending on your physical machine and environment, you may have to &quot;tweak&quot; Virtual Box and the Ubuntu instance to get it just right. Some common fixes of note including:</p>
+<ul>
+<li><a href="https://askubuntu.com/questions/22743/how-do-i-install-guest-additions-in-a-virtualbox-vm">Ubuntu is not working in Full Screen Mode (and a bunch of other additions)</a> </li>
+<li><a href="https://unix.stackexchange.com/questions/502540/why-does-drmvmw-host-log-vmwgfx-error-failed-to-send-host-log-message-sh">Failed to send host log message</a></li>
+</ul>
+
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+  <br>
+  <script>
+    $(document).on('keydown', function(e) {
+  e = e || window.event;
+  var nextTab;
+  switch (e.which || e.keyCode) {
+    case 37: // left
+      nextTab = $('.tab-menu a[data-tab].active').prev('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').last();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+
+    case 39: // right
+      nextTab = $('.tab-menu a[data-tab].active').next('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').first();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+  }
+});
+
+    $(document).ready(function() {
+  $('img').addClass('ui image');
+
+  $('.ui.embed').embed();
+
+  const $images = $('.lab img');
+  jQuery.each($images, function(i) {
+    if ($images[i].alt.length > 0) {
+      const divImg = $(document.createElement('div')).addClass(
+        'ui basic segment',
+      );
+      $($images[i]).wrap(divImg);
+      const divLabel = $(document.createElement('div')).addClass(
+        'ui blue ribbon label',
+      );
+      divLabel.append($images[i].alt);
+      $(divLabel).insertBefore($images[i]);
+    }
+  });
+
+  $('.ui.menu .item').tab({
+    history: true,
+    historyType: 'hash',
+  });
+
+  $('.popup').popup();
+
+  $('.ui.sidebar')
+    .sidebar({ context: $('.pushable') })
+    .sidebar('setting', 'transition', 'slide out')
+    .sidebar('attach events', '#toc');
+});
+
+  </script>
+
+
+
+  <div class="ui bottom fixed borderless right menu">
+    <div class="ui right small menu">
+      <div class="ui tiny basic message segment">
+         Powered by <a href="https://github.com/edeleastar/tutors-ts">tutors-ts.</a> Unless otherwise stated, this work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+      </div>
+    </div>
+  </div>
+
+  </body>
+
+</html>

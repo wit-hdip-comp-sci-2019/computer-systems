@@ -16,6 +16,38 @@
   "los": [
    ]
 ,
-  "topics" : [  ]
+  "topics" : [  {
+    
+  
+    "properties" : {},
+  
+  "type" : "topic",
+  "title" : " Module introduction and overview ",
+  "img" : "topic.png",
+  "videoid" : "",
+  "objectives" : "<p>Linux · Virtual Machines · Vagrant · Computer Networks</p>",
+  "folder" : "topic-00-overview",
+  "link" : "index.html",
+  "los": [
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "lab",
+  "title" : "Preparatory Lab",
+  "img" : "img/main.png",
+  "videoid" : "none",
+  "objectives" : "<p>Virtualbox · Linux</p>",
+  "folder" : "book-1",
+  "link" : "index.html",
+  "los": [
+   ]
+
+    } 
+   ]
+
+  }
+ ]
   }
 
