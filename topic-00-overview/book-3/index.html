@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.css"
+          type="text/css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/railscasts.min.css"
+          rel="stylesheet"/>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/java.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/kotlin.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <style>
+      
+
+body {
+  font-family: "Open Sans", "Helvetica", "Helvetica Neue",  "Arial", sans-serif;
+  font-size:90%;
+  color: black;
+}
+
+p {
+  margin: 0.5em;
+}
+
+pre code {
+  font-family: "Monaco";
+  font-size: 100%;
+}
+
+img {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin:10px;
+}
+
+h1, h2, h3 {
+  border-bottom:thin solid black;
+  margin-bottom: 0.5em;
+  margin-top: 1em;
+}
+
+h1 {
+  font-style:italic;
+  font-size:130%;
+}
+
+h2 {
+  font-size:110%;
+}
+
+h3 {
+  font-size:100%;
+}
+
+
+
+      
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+.wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.footer {
+  background: white;
+  text-align: right;
+}
+.content {
+  flex: 1;
+  overflow: auto;
+}
+
+
+
+    </style>
+  </head>
+
+  
+  
+
+  <div class="ui fixed top pointing inverted stackable menu labmenu">
+    <header class="header item">
+      <i id="toc" class="sitemap icon"></i>
+      
+        <a href="../index.html">  00: Module introduction and overview  </a>
+      
+    </header>
+    <div class="right tab-menu menu">
+      
+        <a class="item" data-tab="Networking and Sense HAT">
+          Networking and Sense HAT
+        </a>
+      
+        <a class="item" data-tab="01">
+          01
+        </a>
+      
+        <a class="item" data-tab="02">
+          02
+        </a>
+      
+    </div>
+  </div>
+
+
+  
+
+  <div class="ui pushable">
+    <div class="ui inverted labeled icon left inline vertical sidebar menu">
+      <br><br>
+      
+        
+          
+            <a class="item"
+               href="http://wit-hdip-comp-sci-2019.github.io/computer-systems//topic-00-overview/book-1/index.html">Preparatory Lab </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://wit-hdip-comp-sci-2019.github.io/computer-systems//topic-00-overview/book-2/index.html">Shell Scripting </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://wit-hdip-comp-sci-2019.github.io/computer-systems//topic-00-overview/book-3/index.html">Networking and Sense HAT </a>
+          
+        
+      
+    </div>
+    <div class="pusher" tabindex="-1">
+      <div class="ui basic segment">
+        <br>
+        
+          <div class="ui tab segment lab" data-tab="Networking and Sense HAT">
+            <h1>Networking and the SenseHat</h1>
+<p>Network · SenseHat</p>
+<h2>Objectives</h2>
+<ul>
+<li>Investigate network configuration on your machine.</li>
+<li>Write a program and execute it on the SenseHat Emulator.</li>
+<li>Send a message on the web.</li>
+</ul>
+<h2>Prerequisites</h2>
+<ul>
+<li>Completed preparatory lab</li>
+</ul>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="01">
+            <h1>The Local Network</h1>
+<h2>Introduction</h2>
+<p>You will now investigate your local network setup. From a networking perspective, it&#39;s a good idea to know:</p>
+<ul>
+<li>how you connect to the local network.</li>
+<li>the IP address you have on the internet.</li>
+<li>the network interfaces you have on your machine.</li>
+</ul>
+<p>It may be useful to be able to investigate these details if you need to troubleshoot connectivity and network issues in later labs.  </p>
+<h2>Your Local Network</h2>
+<p>You are likely to be using one of the following systems to connect to the internet:</p>
+<ul>
+<li>DSL/Fiber wired connection with a home router using an Internet Service Provider (e.g. Eir)</li>
+<li>Mobile Broadband router (sometimes known as a &#39;hotspot&#39;) provided by a mobile network provider (e.g. 3).</li>
+<li>3rd party wireless provider or general apartment complex wireless connection. </li>
+</ul>
+<p>Most solutions will require that you have some form of physical device that can route network traffic from your home network and the internet (usually called <strong>Router</strong>). You can then connect your devices to the router and you&#39;re up and running! Every device that you connect must have a suitable network interface.</p>
+<h2>Your IP address</h2>
+<p>An Internet Protocol address (IP address) is an identifying number for devices connected to a network. An IP address allows a device to communicate with other devices over an IP-based network, for example the internet.</p>
+<ul>
+<li><p>Open a terminal window on your machine and, at the command prompt, enter the following command for your Operating System:  </p>
+</li>
+<li><p>Windows: <code>ipconfig</code></p>
+</li>
+<li>Linux: <code>ifconfig</code></li>
+<li>OS X: <code>ifconfig</code></li>
+</ul>
+<p>You should see a summary of the network interfaces on your machine:</p>
+<p><img src="./img/ipconfig.jpg" alt="ipconfig on Windows"></p>
+<p>Your network set up will look different depending on various factors such as how you connect (wired, wifi) and how many network interfaces you have on your machine. More than likely, you should have at least 2 at the moment (assuming you completed the on-site lab); Ethernet(wired) and/or Wireless LAN (WiFi).</p>
+<p>So how do you know which interface you&#39;re currently using to connect to the internet? Generally, your Operating System will select the connected interface with the highest speed. If you&#39;re &#39;wired&#39; (usually 100mbit per second or 1000mbit per second) then that&#39;s the interface that will be used, otherwise it will fall back to wireless. 
+You can usually deduce this from the ipconfig output. To know for sure, you can have a look at the routing table on your machine. The routing table shows what interfaces network traffic will be sent out on.</p>
+<ul>
+<li>On Windows,Linux and OS X, use the <code>netstat –nr</code> command to see a summary of the routing information. </li>
+<li>Find the IPv4 Route table. You will see one entry indicated as default(or with a destination of 0.0.0.0). That&#39;s the interface used to connect to the internet. </li>
+</ul>
+<p><img src="./img/routing-table.png" alt="Routing Table (Linux)"></p>
+<p><img src="./img/routing-table-windows.png" alt="Routing Table (Windows)"></p>
+<h3>Exercise</h3>
+<p>Using the above commands, answer the following questions:  </p>
+<ul>
+<li>How many interfaces are listed on your machine?</li>
+<li>What is the ip address of the interface are you using?</li>
+<li>If not already, start up the virtual machine from the previous lab and run the ifconfig/ipconfig on your host machine again. Is there a new interface now? If so, why do you think it&#39;s there?</li>
+</ul>
+<h2>PING</h2>
+<p>PING(Packet INternet Groper) sends ECHO_REQUEST packets to the IP address you specify. It’s a handy way to see whether your machine can communicate with the Internet or another machine. However many machines are configured <strong>not</strong> to respond to pings so, if you don&#39;t get a response, it doesn&#39;t  mean the machine is not connected and available for communication.</p>
+<p>So you&#39;ve all connected to the Wifi with your host machines So you should be able to ping each others host machines from your machine. Try the following:</p>
+<ul>
+<li>Determine the ip address of your host machine on the local network.</li>
+<li>Ask your neighbour (or help them) what their IP address is.</li>
+<li>Ping them by typing <em>ping</em> followed by their IP address. All things going well you should see a successful response.</li>
+</ul>
+<p><img src="./img/ping1.png" alt="Ping your neighbour">  </p>
+<p>You can also use Ping to check if you can connect to the internet. Type <strong><code>ping google.ie</code></strong> to see if you can get a response from Google. This time, you should see something like this: </p>
+<p><img src="./img/ping2.png" alt="Pinging Google"></p>
+<p>Notice that you used a <strong>domain name</strong> this time. In this case, your machine would have used Domain Name System (DNS) to get the IP address for a &quot;google.ie&quot;. As you can see, in this example the IP address is <em>209.85.203.94</em> and we got a successful reply so the virtual machine, pc0, is connected to the internet!<br>We&#39;ll cover more about DNS in future coursework.</p>
+<h2>Tracepath</h2>
+<p>Tracepath is a network troubleshooting utility which shows the number of &quot;hops&quot; taken by network &quot;packets&quot; to reach a destination and also determine the travelling path through the network. In the terminal session, type <strong><code>tracepath www.tssg.ie</code></strong> to see the path though the network to the tssg web site. You should see responses similar to the following:  </p>
+<p><img src="./img/tracepath1.png" alt="ifconfig">  </p>
+<ul>
+<li>Also, do a tracepath using a neighbours IP address. Does it complete successfully and how many hops does it take?</li>
+</ul>
+<h2>Private and Public IP addresses</h2>
+<p><img src="./img/public-ip.png" alt="Private and Public IP addresses">  </p>
+<p>You now know the IP address of your computer on your local area network(LAN). However, this is probably a &quot;local&quot; IP address that is just used in your LAN. It is not the IP address that the rest of the internet uses to interact with your computer. Your internet service provider will assign a single public IP address that is used by your computer (and all other devices on your LAN) and your router can translate traffic between local and public IP addresses. There are several  web services that can be used to find out your public IP address.  </p>
+<ul>
+<li>In a browser, go to <a href="www.google.ie">Google</a> and search &quot;what is my IP&quot;. You’ll see the Public IP address of your computer.</li>
+</ul>
+<p><img src="./img/google-ip.png" alt="Public IP Address"> </p>
+<p>IP addresses are managed by the Internet Assigned Numbers Authority (IANA), which has overall responsibility for the Internet Protocol (IP) address pool. 
+Your public IP address is usually based on a real-world location and can be used to estimate where you are. For example, your IP address can be used to give you weather forecasts for the town you&#39;re in or to advertise local services in the area. To see this in action, you can use several web sites that will display your IP address and location.  </p>
+<ul>
+<li>In a web browser, go to www.acuweather.com and see the result...</li>
+</ul>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="02">
+            <h1>Raspberry Pi Sense HAT Emulator</h1>
+<h4>Try a pi before you buy!</h4>
+<p>As you know we will be using a Raspberry Pi in the latter part of the module to explore wireless networking and &quot;device-level&quot; connected applications. You will need to buy a Raspberry pi and Sense HAT to complete and assignments and labs.
+The Sense HAT(Hardware Attached on Top), the multi-purpose add-on board for the Raspberry Pi that contains various sensors and an array of RGB LEDs. IT was also sent into space as part of the Astro Pi project on the International Space Station.
+<img src="./img/sensehat.jpg" alt="Sense HAT"></p>
+<p>However, we don&#39;t need the Pi and Sense Hat to start working with it. A US-based start-up called Trinket with Raspberry Pi have developed a web-based emulator for Sense Hat. The emulator is a useful development tool as it allows you to test, debug and share applications without putting them on an actual device (you will probably use an emulator for your Mobile App Dev module).  </p>
+<p><img src="./img/sensehatemulator.png" alt="Sense HAT Emulator">  </p>
+<h3>Programming the Emulator</h3>
+<p>The emulator uses a programming language called Python. You have probably not come across Python before but you do have knowledge of programming now and we will use Trinket to &quot;hack&quot; an existing code example. Try the following with Trinket:</p>
+<ul>
+<li>Open the following Sensor Hat template in Trinket: <a href="https://trinket.io/python/a242f4535b" target="_blank"><a href="https://trinket.io/python/a242f4535b">https://trinket.io/python/a242f4535b</a></a></li>
+<li>Have a close look at the script and try to deduce what&#39;s going to happen when you run it.</li>
+<li>Run the example by clicking the run button.</li>
+</ul>
+<p>As you can see, it prints the message across the LEDs. See if you can change the program to:</p>
+<ul>
+<li>print you name instead of &quot;HDip Comp Sci&quot;</li>
+<li>change the colour to red.</li>
+</ul>
+<h3>Environment Data</h3>
+<p>The Sense HAT has temperature, pressure and humidity sensors that can sense environment variables. Notice that the emulator has sliders you can move to change these values.</p>
+<p><img src="./img/sliders.png" alt="Sense Hat">  </p>
+<p>You can use this to test how your code responds to environmental variables. Have a look at the following trinket code that uses the temperature sensor:</p>
+<p>Now let use the temperature sensor on the board to make a kind of &quot;smart&quot; thermostat. Check out the following example that uses the temperature sensor: <a href="https://trinket.io/library/trinkets/cceba5489f" target="_blank"><a href="https://trinket.io/library/trinkets/cceba5489f">https://trinket.io/library/trinkets/cceba5489f</a></a></p>
+<p> Run the example and you&#39;ll see the temperature printed in the lower console output window. Let&#39;s combine modify this simple example to use the temperature to do the following:
+ + If the temperature greater than or equal to 25 degrees celcius print &quot;HOT!&quot; on the Sense Hat, otherwise print &quot;Fine!&quot; in green(i.e if it&#39;s below 25)   </p>
+<p>In the trinket temperature example, replace the code in main.py with the following:  </p>
+<pre><code class="lang-python">from sense_hat import SenseHat
+
+sense = SenseHat()
+sense.clear()
+green = (0, 255, 0)
+red = (255,0,0)
+while True:
+  temp = sense.get_temperature()
+  if temp &gt;=25:
+    sense.show_message(&quot;HOT!&quot;, text_colour = red)
+  else:
+    sense.show_message(&quot;Fine!&quot;, text_colour = green)
+  print(temp)</code></pre>
+<p>Now we are using an environment variable (temperature) in our program to make a decision(i.e. decide if it&#39;s hot or not) and visually indicating this using the Sense Hat.</p>
+<h2>Internet of Things</h2>
+<p>This is a networking module so now lets stick some networking into the program and connect our emulated device to the internet.
+Let&#39;s presume this device is part of a network of environment sensors that need to send their data to a central messaging service.<br>In this example, we will send our data to a &quot;channel&quot; on the Thingspeak platform. We can do this by programmatically sending a HTTP request with an encoded URL. This is similar to what you did in Web Dev with HTML forms except we&#39;re doing it programmatically using Python.</p>
+<p>Update your program with the following code:</p>
+<pre><code class="lang-Python">from sense_hat import SenseHat
+import urllib.request
+import time
+
+
+sense = SenseHat()
+sense.clear()
+green = (0, 255, 0)
+red = (255,0,0)
+#You&#39;ll need to update the following statement...
+serviceurl = &#39;https://api.thingspeak.com/update?field1=YOUR_DEVICE_NAME&amp;api_key=USE_YOUR_OWN_OR_GET_IT_IN_CLASS&gt;&#39;
+
+while True:
+  temp = sense.get_temperature()
+  url = serviceurl + &#39;&amp;field2=&#39;+str(temp)
+  if temp &gt;=25:
+    sense.show_message(&quot;HOT!&quot;, text_colour = red)
+  else:
+    sense.show_message(&quot;Fine!&quot;, text_colour = green)    
+  urllib.request.urlopen(url)
+  time.sleep(5)
+  print(temp)</code></pre>
+<p>Replace the <em>YOUR_DEVICE_NAME</em> with a unique name of your device (I&#39;ll leave that up to you) and replace <em>USE_YOUR_OWN_OR_GET_IT_IN_CLASS</em> with the api key given in class.</p>
+<h2>Want to do more...</h2>
+<p>Create an account at <a href="https://thingspeak.com/"><a href="https://thingspeak.com/">https://thingspeak.com/</a></a> and set up your own channel to receive data from your device.</p>
+
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+  <br>
+  <script>
+    $(document).on('keydown', function(e) {
+  e = e || window.event;
+  var nextTab;
+  switch (e.which || e.keyCode) {
+    case 37: // left
+      nextTab = $('.tab-menu a[data-tab].active').prev('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').last();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+
+    case 39: // right
+      nextTab = $('.tab-menu a[data-tab].active').next('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').first();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+  }
+});
+
+    $(document).ready(function() {
+  $('img').addClass('ui image');
+
+  $('.ui.embed').embed();
+
+  const $images = $('.lab img');
+  jQuery.each($images, function(i) {
+    if ($images[i].alt.length > 0) {
+      const divImg = $(document.createElement('div')).addClass(
+        'ui basic segment',
+      );
+      $($images[i]).wrap(divImg);
+      const divLabel = $(document.createElement('div')).addClass(
+        'ui blue ribbon label',
+      );
+      divLabel.append($images[i].alt);
+      $(divLabel).insertBefore($images[i]);
+    }
+  });
+
+  $('.ui.menu .item').tab({
+    history: true,
+    historyType: 'hash',
+  });
+
+  $('.popup').popup();
+
+  $('.ui.sidebar')
+    .sidebar({ context: $('.pushable') })
+    .sidebar('setting', 'transition', 'slide out')
+    .sidebar('attach events', '#toc');
+});
+
+  </script>
+
+
+
+  <div class="ui bottom fixed borderless right menu">
+    <div class="ui right small menu">
+      <div class="ui tiny basic message segment">
+         Powered by <a href="https://github.com/edeleastar/tutors-ts">tutors-ts.</a> Unless otherwise stated, this work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+      </div>
+    </div>
+  </div>
+
+  </body>
+
+</html>

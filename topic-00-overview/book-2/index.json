@@ -1,0 +1,59 @@
+
+
+
+  {
+  
+  
+    "properties" : {},
+  
+  "type" : "lab",
+  "title" : "Shell Scripting",
+  "img" : "img/main.jpg",
+  "videoid" : "none",
+  "objectives" : "<p>Shell basics · Files · Users · Permissions</p>",
+  "folder" : "book-2",
+  "link" : "index.html",
+  "los": [
+   ]
+,
+  "chapters" : [
+  
+    {
+    "title": "# Shell Scripting",
+    "shortTitle": "Shell Scripting",
+    "contentMd" : "# Shell Scripting\r\n\r\nShell basics · Files · Users · Permissions\r\n\r\n## What is “Shell Scripting”?\r\n* In Linux, it is sometimes necessary to perform a number of complex shell commands in order to achieve an overall goal. \r\n* In the situation where we have to perform a sequence of complex or repetitive shell commands, this process can be very tedious and time consuming. \r\n* The interpretative nature of the shell in Linux provides us with an alternative that helps speeds up this process. \r\n\r\n* This facility is known as **“Shell Scripting”** or **“Shell Programming”** . \r\n\r\nA script is a file containing shell commands that can interact with the user, repeat commands and make decisions. \r\n\r\nTo avail of this flexibility provided by “Shell Programming”, all we need to do is to:\r\n\r\n1. Place the shell commands (which we would normally type at the command prompt) into a file and \r\n2. then execute the file.\r\n"
+    },
+  
+    {
+    "title": "##Be careful of the Basics:",
+    "shortTitle": "01",
+    "contentMd" : "##Be careful of the Basics:\r\n\r\n1. Linux IS case sensitive so be careful with working with filenames and with commands\r\n2. Become familiar with naming conventions i.e. no spaces\r\n3. In Linux, the shell is a program that interprets commands & acts as an intermediary between the user and the inner workings of the OS. \r\n\r\n##We will use the Ubuntu Distribution \r\nThere are some basic exercises that we will complete from today's handout now.\r\n\r\n##Manual\r\n\r\nThere is a very comprehensive manual included which can be used simply by the ***man*** command, i.e. \r\n~~~~\r\nman ls\r\n~~~~\r\nwhich will return with the manual page for the ***ls*** command.\r\n\r\n\r\n## Examples of some shell scripting commands:\r\n\r\n1. Suppose we need to find out the number of logged-in users several times throughout the day:\r\nThe Linux command would be as follows:\r\n~~~~\r\n    $ who | wc –l\r\n~~~~\r\nPlease note:\r\n  - This is the lowercase letter \" **l** \", not the number \"1\" \r\n  - Do NOT type the $ sign - this is just shorthand for the command line prompt\r\n\r\n\r\nNote that this command is actually a combination of two commands, connected by a pipe.  \r\n\r\nA pipe is used to connect the output of one command to the input of another command. The vertical bar symbol **|** is used to specify a pipe.  In this example, the output of who is provided as input to the **wc –l** command.  who lists the users currently logged on, one per line.  **wc –l** counts the number of lines in its input.\r\n\r\nSo, to avoid having to re-type this command each time we wish to find out how many users are logged in, we will create a file called ***numusers***.\r\n\r\n## Creating a Shell Scripting File\r\n**nano** is a command-line text editor. \r\n**gedit** is a good graphical alternative\r\n\r\n1. We create the file\r\n~~~~\r\n    $nano numusers\r\n~~~~\r\n2. We type in the shell command\r\n~~~~\r\n    who | wc –l\r\n~~~~\r\n3. We save the file \r\n~~~~\r\n    CTRL+O\r\n~~~~\r\n4. And exit the file\r\n~~~~\r\n    CTRL+X\r\n~~~~\r\n5. To execute the commands contained in the file numusers, all you now have to do is type **./numusers** at the command line\r\n\r\n~~~~\r\n    $ ./numusers\r\n\tbash: ./numusers: Permission denied\r\n\t$\r\n~~~~\r\n\r\nSo what went wrong?  \r\n"
+    },
+  
+    {
+    "title": "## File Permissions and Re-directing output",
+    "shortTitle": "02",
+    "contentMd" : "## File Permissions and Re-directing output\r\n~~~~\r\n\t$ ls -l numusers\r\n~~~~\r\nThis will show the permissions of the file ***numusers*** \r\n\r\nBefore you can execute a program this way, you must change the file’s permissions and make it **executable**.   \r\nUse the **chmod** (change file modes) command to do this:\r\n~~~~\r\n    $ chmod 755 numusers\r\n~~~~\r\n\r\n1.\tSo as the first part of this exercise, create and run the above shell script ***numusers***\r\n\r\n You can put any commands at all inside a file, make the file executable, and then execute its contents simply by typing it name to the shell. \r\n\r\n It’s that simple and that powerful.\r\n\r\n2. As an extension to the script above, use the shell script in conjunction with the file re-direction operator to redirect the output to a file called “***howmany***”\r\n~~~~\r\n    $ ./numusers > howmany\r\n~~~~\r\n\r\n3. To see what has been written to the howmany file, enter\r\n~~~~\r\n     $ cat howmany\r\n~~~~\r\n\r\n## ASIDE: A practical use of the Octal numbering system\r\n~~~~\r\n\t$ ls -l numusers\r\n~~~~\r\nwill show the amended file permissions that you've set for the file ***numusers***. \r\n\r\nFor all files, ***read***, ***write*** and ***execute*** permissions can be granted on the file for three categories, namely ***user***, ***group*** and ***others***.\r\n\r\nPreceeding the permissions, when using the ***ls -l*** command, is the fIle type:\r\n\r\n  - \" - \" means a file\r\n  - \" d \" means a directory\r\n\r\nFor example: \r\n~~~~\r\n $ chmod 755 numusers\r\n~~~~ \r\nwill assign read, write and execute permission to the ***owner***, and just read and execute permission to everyone else (***group*** and ***others***), on the file called ***numusers***\r\n\r\nOctal ***755*** (base8) converts to Binary 111101101 (base2). \r\n\r\n\r\nSplitting this binary number above that has 9 digits into three groups for each of the three categories of file user, where each 1 meaning turning on for the respective permission, gives the following file permissions:\r\n\r\n\r\n111 101 101 (base2)\r\n\r\n***owner 111*** All read  write  execute permissions (read=1, write=1, exe=1)\r\n\r\n***group 101*** Only read and execute permissions (read=1, write=0, exe=1)\r\n\r\n***others 101*** Only read and execute permissions (read=1, write=0, exe=1)\r\n\r\n## TIP\r\nWe could shorten this command again to \r\n~~~~\r\n $ chmod +x numusers\r\n~~~~ \r\n\r\n\r\n\r\n"
+    },
+  
+    {
+    "title": "# Example 2",
+    "shortTitle": "03",
+    "contentMd" : "# Example 2\r\n\r\nFor the next example suppose you want to write a shell program called “***stats***” that prints the date and time, the number of users logged in, and your current working directory. \r\n\r\nYou know that the three command sequences you need to get this information are: \r\n\r\n~~~~\r\ndate, who | wc –l, and pwd.\r\n~~~~\r\n\r\n~~~~\r\n$ nano stats\r\n   Enter the lines:\r\n   date\r\n   who | wc –l\r\n   pwd\r\n$ chmod +x stats\r\n$ ./stats\r\n   Thu May 15 14:12:23 IST 2014\r\n   3\r\n   /home/jbloggs/\r\n$\r\n~~~~\r\n\r\nTo make the output of this script a bit more user friendly we can add some text to the script, to appear at certain points of the programs execution. This functionality is achieved through the use of the shell command **echo**. Add the following lines to your ***stats*** program \r\n\r\n~~~~\r\n$ nano stats\r\n  echo The current time and date is:\r\n  date\r\n  echo\r\n  echo The number of users on the system is: \r\n  who | wc –l\r\n  echo\r\n  echo Your current working directory is:\r\n  pwd\r\n~~~~\r\n\r\nSave your file and exit\r\n\r\n\r\nRun the script\r\n"
+    },
+  
+    {
+    "title": "# COMMENTS",
+    "shortTitle": "04",
+    "contentMd" : "# COMMENTS\r\n\r\nThe Shell Programming language would not be complete without a ***comment statement***. \r\n\r\nA comment statement allows you to insert remarks or comments about your program without it having any effect on its execution. \r\n\r\n - Can you think why a program might benefit from ***comments***?\r\n\r\nWhenever the shell encounters the special character ***#*** at the beginning of a word or line, it takes whatever characters following the ***#*** as comments and simply ignores them:\r\n\r\n~~~~\r\n# Author: C Cahill\r\n# Program Description:\r\n# This program calculates the amount of CPU usage of each user ………\r\n~~~~\r\n\r\nComments are useful for documenting commands or sequences of commands whose purpose may not be obvious. \r\n\r\n# VARIABLES\r\nLike virtually all programming languages, the shell allows you to store values into ***variables***.  \r\n\r\nTo store a value in a shell variable, you simply write the name of the variable followed immediately by the equals sign =, followed immediately by the value you wish the variable to contain \r\n\r\n**N.B. do not use spaces**\r\n\r\nvariable_name=value\r\n~~~~\r\n$ count=1\r\n~~~~\r\n\r\nTo assign the value /home/username/bin to the variable mybin, you simply write \r\n\r\n~~~~\r\n$ mybin=/home/username/bin   \r\n~~~~\r\n***NOTE: (replace username with your user name)***\r\n\r\nTwo points are worth noting at this stage:\r\n\r\n1. Remember, spaces are **not** permitted on either side of the equals sign\r\n\r\n2. Unlike most programming languages the shell has ***no concept of data types***.\r\n\r\nWhenever you assign a value to a shell variable, no matter what it is the shell simply interprets that value as a string of characters. So when we stored the value 1 into the shell variable count above, the shell made no distinction whatsoever that an integer value was being stored in the variable.\r\n\r\n# Displaying the values of Variables\r\n\r\nUsing the ***echo*** command encountered above, we can display the value stored in a shell variable as follows:\r\n~~~~\r\necho $variable_name\r\n~~~~\r\n\r\nThe shell recognises the **$** as a special character, if a valid variable name follows the ***$*** the shell understands that it is to substitute the value in place of the variable name.\r\n~~~~\r\n$ echo $count\r\n$ echo $mybin\r\n~~~~\r\n\r\n# Program input\r\n\r\nUsing the ***read*** command allows us to get input form the user into a variable:\r\n\r\n***read variable_name***\t\t\t\r\n(note no ***$*** sign before variable name)\r\n\r\n~~~~\r\n$ read number\r\n365\t(entered by user)\r\n$ echo $number\r\n365\t(output)\r\n~~~~"
+    },
+  
+    {
+    "title": "# Exercises ",
+    "shortTitle": "Exercises",
+    "contentMd" : "# Exercises \r\n\r\nPlease complete the following file in your own time\r\n\r\n- [Scripting Exercises](./archives/archive.zip)\r\n\r\n\r\nThe above file will introduce you to:\r\n\r\n1. Arithmetic\r\n2. IF statements\r\n3. WHILE and FOR loops\r\n4. plus links to very useful online resources\r\n\r\n\r\n\r\n\r\n"
+    }
+  
+  ]
+  }
+

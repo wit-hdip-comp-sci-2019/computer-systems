@@ -10,7 +10,7 @@
   "title" : "Computer Systems & Networks ",
   "img" : "",
   "videoid" : "",
-  "objectives" : "<p>logic · computer organisation · os · networks · interfaces · sensors ·</p>",
+  "objectives" : "<p>logic · computer organisation · os · networks · interfaces · sensors</p>",
   "folder" : "computer-systems-2019",
   "link" : "index.html",
   "los": [
@@ -22,7 +22,7 @@
     "properties" : {},
   
   "type" : "topic",
-  "title" : " Module introduction and overview ",
+  "title" : " 00: Module introduction and overview ",
   "img" : "topic.png",
   "videoid" : "",
   "objectives" : "<p>Linux · Virtual Machines · Vagrant · Computer Networks</p>",
@@ -34,12 +34,60 @@
   
     "properties" : {},
   
+  "type" : "talk",
+  "title" : " Module Introduction ",
+  "img" : "hdip-compsys-intro.png",
+  "videoid" : "none",
+  "objectives" : "<p>Introductions · Module structure · Module assessment · Ethos</p>",
+  "folder" : "talk-1",
+  "link" : "hdip-compsys-intro.pdf",
+  "los": [
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
   "type" : "lab",
   "title" : "Preparatory Lab",
   "img" : "img/main.png",
   "videoid" : "none",
   "objectives" : "<p>Virtualbox · Linux</p>",
   "folder" : "book-1",
+  "link" : "index.html",
+  "los": [
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "lab",
+  "title" : "Shell Scripting",
+  "img" : "img/main.jpg",
+  "videoid" : "none",
+  "objectives" : "<p>Shell basics · Files · Users · Permissions</p>",
+  "folder" : "book-2",
+  "link" : "index.html",
+  "los": [
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "lab",
+  "title" : "Networking and Sense HAT",
+  "img" : "img/main.png",
+  "videoid" : "none",
+  "objectives" : "<p>Network · SenseHat</p>",
+  "folder" : "book-3",
   "link" : "index.html",
   "los": [
    ]

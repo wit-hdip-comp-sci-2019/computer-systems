@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.css"
+          type="text/css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/railscasts.min.css"
+          rel="stylesheet"/>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/java.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/kotlin.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <style>
+      
+
+body {
+  font-family: "Open Sans", "Helvetica", "Helvetica Neue",  "Arial", sans-serif;
+  font-size:90%;
+  color: black;
+}
+
+p {
+  margin: 0.5em;
+}
+
+pre code {
+  font-family: "Monaco";
+  font-size: 100%;
+}
+
+img {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin:10px;
+}
+
+h1, h2, h3 {
+  border-bottom:thin solid black;
+  margin-bottom: 0.5em;
+  margin-top: 1em;
+}
+
+h1 {
+  font-style:italic;
+  font-size:130%;
+}
+
+h2 {
+  font-size:110%;
+}
+
+h3 {
+  font-size:100%;
+}
+
+
+
+      
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+.wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.footer {
+  background: white;
+  text-align: right;
+}
+.content {
+  flex: 1;
+  overflow: auto;
+}
+
+
+
+    </style>
+  </head>
+
+  
+  
+
+  <div class="ui fixed top pointing inverted stackable menu labmenu">
+    <header class="header item">
+      <i id="toc" class="sitemap icon"></i>
+      
+        <a href="../index.html">  00: Module introduction and overview  </a>
+      
+    </header>
+    <div class="right tab-menu menu">
+      
+        <a class="item" data-tab="Shell Scripting">
+          Shell Scripting
+        </a>
+      
+        <a class="item" data-tab="01">
+          01
+        </a>
+      
+        <a class="item" data-tab="02">
+          02
+        </a>
+      
+        <a class="item" data-tab="03">
+          03
+        </a>
+      
+        <a class="item" data-tab="04">
+          04
+        </a>
+      
+        <a class="item" data-tab="Exercises">
+          Exercises
+        </a>
+      
+    </div>
+  </div>
+
+
+  
+
+  <div class="ui pushable">
+    <div class="ui inverted labeled icon left inline vertical sidebar menu">
+      <br><br>
+      
+        
+          
+            <a class="item"
+               href="http://wit-hdip-comp-sci-2019.github.io/computer-systems//topic-00-overview/book-1/index.html">Preparatory Lab </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://wit-hdip-comp-sci-2019.github.io/computer-systems//topic-00-overview/book-2/index.html">Shell Scripting </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://wit-hdip-comp-sci-2019.github.io/computer-systems//topic-00-overview/book-3/index.html">Networking and Sense HAT </a>
+          
+        
+      
+    </div>
+    <div class="pusher" tabindex="-1">
+      <div class="ui basic segment">
+        <br>
+        
+          <div class="ui tab segment lab" data-tab="Shell Scripting">
+            <h1>Shell Scripting</h1>
+<p>Shell basics · Files · Users · Permissions</p>
+<h2>What is “Shell Scripting”?</h2>
+<ul>
+<li>In Linux, it is sometimes necessary to perform a number of complex shell commands in order to achieve an overall goal. </li>
+<li>In the situation where we have to perform a sequence of complex or repetitive shell commands, this process can be very tedious and time consuming. </li>
+<li><p>The interpretative nature of the shell in Linux provides us with an alternative that helps speeds up this process. </p>
+</li>
+<li><p>This facility is known as <strong>“Shell Scripting”</strong> or <strong>“Shell Programming”</strong> . </p>
+</li>
+</ul>
+<p>A script is a file containing shell commands that can interact with the user, repeat commands and make decisions. </p>
+<p>To avail of this flexibility provided by “Shell Programming”, all we need to do is to:</p>
+<ol>
+<li>Place the shell commands (which we would normally type at the command prompt) into a file and </li>
+<li>then execute the file.</li>
+</ol>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="01">
+            <h2>Be careful of the Basics:</h2>
+<ol>
+<li>Linux IS case sensitive so be careful with working with filenames and with commands</li>
+<li>Become familiar with naming conventions i.e. no spaces</li>
+<li>In Linux, the shell is a program that interprets commands &amp; acts as an intermediary between the user and the inner workings of the OS. </li>
+</ol>
+<h2>We will use the Ubuntu Distribution</h2>
+<p>There are some basic exercises that we will complete from today&#39;s handout now.</p>
+<h2>Manual</h2>
+<p>There is a very comprehensive manual included which can be used simply by the <strong><em>man</em></strong> command, i.e. </p>
+<pre><code>man ls</code></pre>
+<p>which will return with the manual page for the <strong><em>ls</em></strong> command.</p>
+<h2>Examples of some shell scripting commands:</h2>
+<ol>
+<li>Suppose we need to find out the number of logged-in users several times throughout the day:
+The Linux command would be as follows:<pre><code> $ who | wc –l</code></pre>
+Please note:<ul>
+<li>This is the lowercase letter &quot; <strong>l</strong> &quot;, not the number &quot;1&quot; </li>
+<li>Do NOT type the $ sign - this is just shorthand for the command line prompt</li>
+</ul>
+</li>
+</ol>
+<p>Note that this command is actually a combination of two commands, connected by a pipe.  </p>
+<p>A pipe is used to connect the output of one command to the input of another command. The vertical bar symbol <strong>|</strong> is used to specify a pipe.  In this example, the output of who is provided as input to the <strong>wc –l</strong> command.  who lists the users currently logged on, one per line.  <strong>wc –l</strong> counts the number of lines in its input.</p>
+<p>So, to avoid having to re-type this command each time we wish to find out how many users are logged in, we will create a file called <strong><em>numusers</em></strong>.</p>
+<h2>Creating a Shell Scripting File</h2>
+<p><strong>nano</strong> is a command-line text editor. 
+<strong>gedit</strong> is a good graphical alternative</p>
+<ol>
+<li>We create the file<pre><code> $nano numusers</code></pre>
+</li>
+<li>We type in the shell command<pre><code> who | wc –l</code></pre>
+</li>
+<li>We save the file <pre><code> CTRL+O</code></pre>
+</li>
+<li>And exit the file<pre><code> CTRL+X</code></pre>
+</li>
+<li>To execute the commands contained in the file numusers, all you now have to do is type <strong>./numusers</strong> at the command line</li>
+</ol>
+<pre><code>    $ ./numusers
+    bash: ./numusers: Permission denied
+    $</code></pre>
+<p>So what went wrong?  </p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="02">
+            <h2>File Permissions and Re-directing output</h2>
+<pre><code>    $ ls -l numusers</code></pre>
+<p>This will show the permissions of the file <strong><em>numusers</em></strong> </p>
+<p>Before you can execute a program this way, you must change the file’s permissions and make it <strong>executable</strong>.<br>Use the <strong>chmod</strong> (change file modes) command to do this:</p>
+<pre><code>    $ chmod 755 numusers</code></pre>
+<ol>
+<li><p>So as the first part of this exercise, create and run the above shell script <strong><em>numusers</em></strong></p>
+<p>You can put any commands at all inside a file, make the file executable, and then execute its contents simply by typing it name to the shell. </p>
+<p>It’s that simple and that powerful.</p>
+</li>
+<li><p>As an extension to the script above, use the shell script in conjunction with the file re-direction operator to redirect the output to a file called “<strong><em>howmany</em></strong>”</p>
+<pre><code> $ ./numusers &gt; howmany</code></pre>
+</li>
+<li><p>To see what has been written to the howmany file, enter</p>
+<pre><code>  $ cat howmany</code></pre>
+</li>
+</ol>
+<h2>ASIDE: A practical use of the Octal numbering system</h2>
+<pre><code>    $ ls -l numusers</code></pre>
+<p>will show the amended file permissions that you&#39;ve set for the file <strong><em>numusers</em></strong>. </p>
+<p>For all files, <strong><em>read</em></strong>, <strong><em>write</em></strong> and <strong><em>execute</em></strong> permissions can be granted on the file for three categories, namely <strong><em>user</em></strong>, <strong><em>group</em></strong> and <strong><em>others</em></strong>.</p>
+<p>Preceeding the permissions, when using the <strong><em>ls -l</em></strong> command, is the fIle type:</p>
+<ul>
+<li>&quot; - &quot; means a file</li>
+<li>&quot; d &quot; means a directory</li>
+</ul>
+<p>For example: </p>
+<pre><code> $ chmod 755 numusers</code></pre>
+<p>will assign read, write and execute permission to the <strong><em>owner</em></strong>, and just read and execute permission to everyone else (<strong><em>group</em></strong> and <strong><em>others</em></strong>), on the file called <strong><em>numusers</em></strong></p>
+<p>Octal <strong><em>755</em></strong> (base8) converts to Binary 111101101 (base2). </p>
+<p>Splitting this binary number above that has 9 digits into three groups for each of the three categories of file user, where each 1 meaning turning on for the respective permission, gives the following file permissions:</p>
+<p>111 101 101 (base2)</p>
+<p><strong><em>owner 111</em></strong> All read  write  execute permissions (read=1, write=1, exe=1)</p>
+<p><strong><em>group 101</em></strong> Only read and execute permissions (read=1, write=0, exe=1)</p>
+<p><strong><em>others 101</em></strong> Only read and execute permissions (read=1, write=0, exe=1)</p>
+<h2>TIP</h2>
+<p>We could shorten this command again to </p>
+<pre><code> $ chmod +x numusers</code></pre>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="03">
+            <h1>Example 2</h1>
+<p>For the next example suppose you want to write a shell program called “<strong><em>stats</em></strong>” that prints the date and time, the number of users logged in, and your current working directory. </p>
+<p>You know that the three command sequences you need to get this information are: </p>
+<pre><code>date, who | wc –l, and pwd.</code></pre>
+<pre><code>$ nano stats
+   Enter the lines:
+   date
+   who | wc –l
+   pwd
+$ chmod +x stats
+$ ./stats
+   Thu May 15 14:12:23 IST 2014
+   3
+   /home/jbloggs/
+$</code></pre>
+<p>To make the output of this script a bit more user friendly we can add some text to the script, to appear at certain points of the programs execution. This functionality is achieved through the use of the shell command <strong>echo</strong>. Add the following lines to your <strong><em>stats</em></strong> program </p>
+<pre><code>$ nano stats
+  echo The current time and date is:
+  date
+  echo
+  echo The number of users on the system is: 
+  who | wc –l
+  echo
+  echo Your current working directory is:
+  pwd</code></pre>
+<p>Save your file and exit</p>
+<p>Run the script</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="04">
+            <h1>COMMENTS</h1>
+<p>The Shell Programming language would not be complete without a <strong><em>comment statement</em></strong>. </p>
+<p>A comment statement allows you to insert remarks or comments about your program without it having any effect on its execution. </p>
+<ul>
+<li>Can you think why a program might benefit from <strong><em>comments</em></strong>?</li>
+</ul>
+<p>Whenever the shell encounters the special character <strong><em>#</em></strong> at the beginning of a word or line, it takes whatever characters following the <strong><em>#</em></strong> as comments and simply ignores them:</p>
+<pre><code># Author: C Cahill
+# Program Description:
+# This program calculates the amount of CPU usage of each user ………</code></pre>
+<p>Comments are useful for documenting commands or sequences of commands whose purpose may not be obvious. </p>
+<h1>VARIABLES</h1>
+<p>Like virtually all programming languages, the shell allows you to store values into <strong><em>variables</em></strong>.  </p>
+<p>To store a value in a shell variable, you simply write the name of the variable followed immediately by the equals sign =, followed immediately by the value you wish the variable to contain </p>
+<p><strong>N.B. do not use spaces</strong></p>
+<p>variable_name=value</p>
+<pre><code>$ count=1</code></pre>
+<p>To assign the value /home/username/bin to the variable mybin, you simply write </p>
+<pre><code>$ mybin=/home/username/bin</code></pre>
+<p><strong><em>NOTE: (replace username with your user name)</em></strong></p>
+<p>Two points are worth noting at this stage:</p>
+<ol>
+<li><p>Remember, spaces are <strong>not</strong> permitted on either side of the equals sign</p>
+</li>
+<li><p>Unlike most programming languages the shell has <strong><em>no concept of data types</em></strong>.</p>
+</li>
+</ol>
+<p>Whenever you assign a value to a shell variable, no matter what it is the shell simply interprets that value as a string of characters. So when we stored the value 1 into the shell variable count above, the shell made no distinction whatsoever that an integer value was being stored in the variable.</p>
+<h1>Displaying the values of Variables</h1>
+<p>Using the <strong><em>echo</em></strong> command encountered above, we can display the value stored in a shell variable as follows:</p>
+<pre><code>echo $variable_name</code></pre>
+<p>The shell recognises the <strong>$</strong> as a special character, if a valid variable name follows the <strong><em>$</em></strong> the shell understands that it is to substitute the value in place of the variable name.</p>
+<pre><code>$ echo $count
+$ echo $mybin</code></pre>
+<h1>Program input</h1>
+<p>Using the <strong><em>read</em></strong> command allows us to get input form the user into a variable:</p>
+<p><strong><em>read variable_name</em></strong><br>(note no <strong><em>$</em></strong> sign before variable name)</p>
+<pre><code>$ read number
+365    (entered by user)
+$ echo $number
+365    (output)</code></pre>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="Exercises">
+            <h1>Exercises</h1>
+<p>Please complete the following file in your own time</p>
+<ul>
+<li><a href="./archives/archive.zip">Scripting Exercises</a></li>
+</ul>
+<p>The above file will introduce you to:</p>
+<ol>
+<li>Arithmetic</li>
+<li>IF statements</li>
+<li>WHILE and FOR loops</li>
+<li>plus links to very useful online resources</li>
+</ol>
+
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+  <br>
+  <script>
+    $(document).on('keydown', function(e) {
+  e = e || window.event;
+  var nextTab;
+  switch (e.which || e.keyCode) {
+    case 37: // left
+      nextTab = $('.tab-menu a[data-tab].active').prev('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').last();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+
+    case 39: // right
+      nextTab = $('.tab-menu a[data-tab].active').next('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').first();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+  }
+});
+
+    $(document).ready(function() {
+  $('img').addClass('ui image');
+
+  $('.ui.embed').embed();
+
+  const $images = $('.lab img');
+  jQuery.each($images, function(i) {
+    if ($images[i].alt.length > 0) {
+      const divImg = $(document.createElement('div')).addClass(
+        'ui basic segment',
+      );
+      $($images[i]).wrap(divImg);
+      const divLabel = $(document.createElement('div')).addClass(
+        'ui blue ribbon label',
+      );
+      divLabel.append($images[i].alt);
+      $(divLabel).insertBefore($images[i]);
+    }
+  });
+
+  $('.ui.menu .item').tab({
+    history: true,
+    historyType: 'hash',
+  });
+
+  $('.popup').popup();
+
+  $('.ui.sidebar')
+    .sidebar({ context: $('.pushable') })
+    .sidebar('setting', 'transition', 'slide out')
+    .sidebar('attach events', '#toc');
+});
+
+  </script>
+
+
+
+  <div class="ui bottom fixed borderless right menu">
+    <div class="ui right small menu">
+      <div class="ui tiny basic message segment">
+         Powered by <a href="https://github.com/edeleastar/tutors-ts">tutors-ts.</a> Unless otherwise stated, this work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+      </div>
+    </div>
+  </div>
+
+  </body>
+
+</html>
